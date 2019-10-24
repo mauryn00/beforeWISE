@@ -1,0 +1,215 @@
+﻿{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            
+        <!-- <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+        </div> -->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{url_for('imports') }}">Imports</a></li>
+                <li><a href="{{url_for('inventory') }}">Inventory</a></li>
+                <li><a href="{{url_for('sales') }}">Sales</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+            
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Welcome, {{ name }}</h1>
+            <p>add a small search bar, searches cars on this page,,,hence cars should be in db as well</p>
+
+            <div class="container">
+                <div class="starter-template">
+                    <br /> <br />
+                    <h1 class="lead">New Arrivals</h1>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/fDJS0fD/jeep.jpg" alt="jeep" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/wcLv5cj/golf.jpg" alt="golf" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/tYyxDpV/audia3.jpg" alt="audia3" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/59Lwg7y/auris.jpg" alt="auris" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/8XkBCMc/rav4brown.jpg" alt="rav4brown" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/34BKKKG/nissannote.jpg" alt="nissannote" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/wLLg6fW/crown.jpg" alt="crown" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/wcLv5cj/golf.jpg" alt="golf" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="https://i.ibb.co/Gkv0F4y/mercedese250.jpg" alt="mercedese250" border="0">
+
+                            <div class="caption">
+                                <p>Lorem ipsum...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+                    <h2 class="sub-header">Add a car</h2>
+                    <h4>Enter car name:</h4>
+                    <form method="POST" action="./dashboard">
+                        <input type="text" name="title">
+                        <input type="submit" value="Add">
+                    </form>
+                    <h2 class="sub-header">Current Inventory</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Car Make</th>
+                                    <th>Car Model</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for car in cars %}
+                                <tr>
+                                    <!-- <td> -->
+                                    <form method="POST" action="./update">
+                                        <td>
+                                            <input type="text" value="{{car.carmake}}" name="oldtitle" readonly>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="" name="newtitle">
+                                        </td>
+                                        <td>
+                                            <input type="submit" value="Update">
+                                        </td>
+                                    </form>
+                                    <td>
+                                        <form method="POST" action="./delete">
+                                            <input type="hidden" value="{{car.carmake}}" name="title">
+                                            <input type="submit" value="Delete">
+                                        </form>
+                                    </td>
+                                </tr>
+
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="starter-template">
+                            <br /> <br />
+                            <h1> Auto Inc.Vehicle Inquiry Form</h1>
+                            <h1 class="lead">Welcome to Auto Inc.</h1>
+                            <p>Tmsiedibefendcflkmldfalejrih jreiahivhb bdusg</p>
+                            <p>-- list the form options you want to use</p>
+                        </div>
+                        <div class="starter-template">
+                            <br /> <br />
+                            <h1>Contact Us </h1>
+                            <h1 class="lead">Welcome to Auto Inc.</h1>
+                            <p>email</p>
+                            <p>phone</p>
+                            <p>currency</p>
+                            <p>social handles</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+{% endblock %}
