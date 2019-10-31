@@ -42,10 +42,16 @@ class Car(db.Model):
     year = db.Column(db.String(4), unique=True, nullable=False,)
     price = db.Column(db.String(20), unique=True, nullable=False,)
 
+class Sbtcrawl(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    carmake = db.Column(db.String(80), unique=True, nullable=False,)
+    #carmodel = db.Column(db.String(80), unique=True, nullable=False,)
+    #color = db.Column(db.String(80), unique=True, nullable=False,)
+    #year = db.Column(db.String(4), unique=True, nullable=False,)
+    price = db.Column(db.String(20), unique=True, nullable=False,)
+
     # carmodel, carid, year ...
 
-    #def __repr__(self):
-     #return "<CarMake: {}>".format(self.title)
 db.create_all()
 @login_manager.user_loader
 def load_user(user_id):
@@ -133,7 +139,7 @@ def dashboard():
     cars = None
     if request.form:
         try:
-            car = Car(carmake=request.form.get("carmake"),
+            car = Sbtcrawl(carmake=request.form.get("carmake"),
                       carmodel=request.form.get("carmodel"),
                       color=request.form.get("color"),
                       year=request.form.get("year"),
@@ -162,16 +168,19 @@ def inventory():
 def FAQ():
     return render_template('FAQ.html')
 
-@app.route("/imports", methods=['GET', 'POST'])
-def imports():
-    return render_template('imports.html')
+
+    
 
 @app.route("/search", methods=['GET', 'POST'])
 def search():
     return render_template('search.html')
 
-@app.route("/refreshdata", methods=['GET', 'POST'])
-def refreshdata():
+#@app.route("/refreshdata", methods=['GET', 'POST'])
+#def refreshdata():
+
+@app.route("/imports", methods=['GET', 'POST'])
+def imports():
+
     #SBT SITE CRAWL
         option = webdriver.ChromeOptions()
         option.add_argument(" — incognito")
@@ -189,16 +198,20 @@ def refreshdata():
         for item in li_items:
             text = item.text
             components = text.split()
-            car = Car(carmake=components[0],
-                      carmodel=components[1],
-                      color=components[1],
-                      year=components[1],
-                      price=components[1])
+            car = Car(id=components[0],
+                      carmake=components[1],
+                      carmodel=components[2],
+                      color=components[3],
+                      year=components[4],
+                      price=components[5])
+
             db.session.add(car)
             db.session.commit()
             print(text,'\n')
-
+        
         browser.close();
+        return render_template('imports.html')
+
 
 @app.route('/logout')
 @login_required
