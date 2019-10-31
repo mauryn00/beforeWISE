@@ -197,7 +197,7 @@ def imports():
     #li_items = ul = browser.find_element_by_class_name("car_prices")
         for item in li_items:
             text = item.text
-            components = text.split()
+            components = text.split()#splits the string into arrays
             car = Car(id=components[0],
                       carmake=components[1],
                       carmodel=components[2],
