@@ -9,12 +9,18 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.keys import Keys
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissuppossedtobesecret!'
 
 basedir = Path(__file__).resolve().parents[0]
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///' + os.path.join(basedir, r'db\users.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, r'db\users.db')
 
 Bootstrap(app)
 db = SQLAlchemy(app)
@@ -29,11 +35,17 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(80))
     
 class Car(db.Model):
-    carmake = db.Column(db.String(80), unique=True, nullable=False, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    carmake = db.Column(db.String(80), unique=True, nullable=False,)
+    carmodel = db.Column(db.String(80), unique=True, nullable=False,)
+    color = db.Column(db.String(80), unique=True, nullable=False,)
+    year = db.Column(db.String(4), unique=True, nullable=False,)
+    price = db.Column(db.String(20), unique=True, nullable=False,)
 
-    def __repr__(self):
-        return "<CarMake: {}>".format(self.title) 
+    # carmodel, carid, year ...
 
+    #def __repr__(self):
+     #return "<CarMake: {}>".format(self.title)
 db.create_all()
 @login_manager.user_loader
 def load_user(user_id):
@@ -55,28 +67,17 @@ class RegisterForm(FlaskForm):
 def index():
     return render_template('index.html')
 
-# @app.route("/home", methods=["GET", "POST"])
-# def home():
-#     cars = None
-#     if request.form:
-#         try:
-#             cars = Car(title=request.form.get("carmake"))
-#             db.session.add(cars)
-#             db.session.commit()
-#         except Exception as e:
-#             print("Failed to add Car")
-#             print(e)
-#     cars = Car.query.all()
-#     return render_template("home.html", cars=cars)
-
 
 @app.route("/update", methods=["POST"])
 def update():
     try:
-        newtitle = request.form.get("newtitle")
-        oldtitle = request.form.get("oldtitle")
-        car = Car.query.filter_by(carmake=oldtitle).first()
-        car.carmake = newtitle
+        car = Car.query.filter_by(carmake=request.form.get("id")).first()
+        car.carmake = request.form.get("make")
+        car.carmodel = request.form.get("model")
+        car.color = request.form.get("color")
+        car.year = request.form.get("year")
+        car.price = request.form.get("price")
+
         db.session.commit()
     except Exception as e:
         print("Failed to Update Car")
@@ -85,8 +86,8 @@ def update():
 
 @app.route("/delete", methods=["POST"])
 def delete():
-    carmake = request.form.get("title")
-    car = Car.query.filter_by(carmake=carmake).first()
+    carid = request.form.get("id")
+    car = Car.query.filter_by(carid=id).first()
     db.session.delete(car)
     db.session.commit()
     return redirect("/dashboard")
@@ -103,7 +104,8 @@ def login():
                 return redirect(url_for('dashboard'))
 
         return '<h1>Invalid username or password!</h1>'
-           # return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
+           # return '<h1>' + form.username.data + ' ' + form.password.data +
+           # '</h1>'
         
     return render_template('login.html', form=form)
 
@@ -118,10 +120,10 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
 
-        return '<h1>A new user has been created!</h1>'
-        # return redirect(url_for('dashboard'))
-        # return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data '</h1>'
-        
+        # return '<h1>' + form.username.data + ' ' + form.email.data + ' ' +
+        # form.password.data '</h1>'
+        return redirect(url_for('dashboard'))
+    
     return render_template('signup.html', form=form)
     
 
@@ -131,8 +133,12 @@ def dashboard():
     cars = None
     if request.form:
         try:
-            cars = Car(carmake=request.form.get("title"))
-            db.session.add(cars)
+            car = Car(carmake=request.form.get("carmake"),
+                      carmodel=request.form.get("carmodel"),
+                      color=request.form.get("color"),
+                      year=request.form.get("year"),
+                      price=request.form.get("price"))
+            db.session.add(car)
             db.session.commit()
         except Exception as e:
             print("Failed to add Car")
@@ -164,6 +170,36 @@ def imports():
 def search():
     return render_template('search.html')
 
+@app.route("/refreshdata", methods=['GET', 'POST'])
+def refreshdata():
+    #SBT SITE CRAWL
+        option = webdriver.ChromeOptions()
+        option.add_argument(" — incognito")
+        browser = webdriver.Chrome('C:\\Users\\Maureen Maina\\Desktop\\4.2\\IS PROJECT TOOLS\\chromedriver.exe') 
+
+        browser.get("https://www.sbtjapan.com/used-cars/?t_country=26&sort=5")
+
+# find_elements_by_xpath returns an array of selenium objects.
+
+        ul = browser.find_element_by_class_name("carlist")# work on searching for price as well
+        li_items = ul.find_elements_by_tag_name('h2')
+
+    #ul = browser.find_element_by_class_name("totalprices_area")
+    #li_items = ul = browser.find_element_by_class_name("car_prices")
+        for item in li_items:
+            text = item.text
+            components = text.split()
+            car = Car(carmake=components[0],
+                      carmodel=components[1],
+                      color=components[1],
+                      year=components[1],
+                      price=components[1])
+            db.session.add(car)
+            db.session.commit()
+            print(text,'\n')
+
+        browser.close();
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -175,7 +211,7 @@ if __name__ == '__main__':
     import os
     HOST = os.environ.get('SERVER_HOST', 'localhost')
     try:
-        PORT = int(os.environ.get('SERVER_PORT', '5555'))
+        PORT = int(os.environ.get('SERVER_PORT', '5555'))    
     except ValueError:
         PORT = 5555
-    app.run(HOST, PORT, debug=True)
+    app.run(HOST, PORT, debug = True)

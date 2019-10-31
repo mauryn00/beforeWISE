@@ -1,30 +1,34 @@
 
-#Imports
+#INDIVIDUAL CAR SEARCH
+
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common import exceptions
 from selenium.webdriver.common.keys import Keys
 
+#Data manipulation
+import pandas as pd
 
-option = webdriver.ChromeOptions()
-option.add_argument(" — incognito")
-browser = webdriver.Chrome('C:\\Users\\Maureen Maina\\Desktop\\4.2\\IS PROJECT TOOLS\\chromedriver.exe') 
-
-browser.get("https://www.sbtjapan.com/used-cars/?t_country=26&sort=5")
-
-# find_elements_by_xpath returns an array of selenium objects.
+#visualization
 
 
-li_items = ul.find_element_by_class_name("car_prices")
-li_items = ul.find_element_by_class_name("carlist")
-li_items = ul.find_elements_by_tag_name('h2')
-li_items = ul.find_elements_by_class_name('totalprices_area')
+browser = webdriver.Chrome('C:\\Users\\Maureen Maina\\Desktop\\4.2\\IS PROJECT TOOLS\\chromedriver.exe')
 
-for item in li_items:
-    text = item.text
-    print(text,'\n')
+sbt_url = 'https://www.sbtjapan.com'
+browser.get ('https://www.sbtjapan.com') #can also be browser.get(sbt_url)
+search_item = 'Toyota Ractis'  # Chose this as an example
+search_bar = browser.find_element_by_id('keyword')
+search_bar.send_keys(search_item)
+search_bar.send_keys(Keys.RETURN)
 
 
- 
+#item_prices = browser.find_elements_by_class_name('c3gUW0')
+#item_titles = browser.find_elements_by_tag_name('h2')
+
+
+#for title in item_titles:
+ #titles_list.append(title.text)
+#for price in item_prices:
+    #prices_list.append(prices.text)
+
+#print (titles_list)
+#print (prices_list)

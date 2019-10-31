@@ -11,6 +11,34 @@ Dashboard
 
 {% block content %}
 
+<head>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+
+        p {
+            font-family: Georgia, Georgia, serif;
+        }
+            p.thick {
+                font-weight: bold;
+            }
+
+        footer {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+            color: black;
+        }
+
+    </style>
+
+</head>
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -48,13 +76,23 @@ Dashboard
                 </div>
 
 
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="thumbnail">
                             <img src="https://i.ibb.co/fDJS0fD/jeep.jpg" alt="jeep" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Jeep</span></li>
+                                        <li><span class="ellipses">Car Model:Grand Cherokee</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:Wine Red</span></li>
+                                        <li><span class="ellipses">Price:Ksh 4,700,000</span></li>
+                                    </ul>
+                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -64,7 +102,15 @@ Dashboard
                             <img src="https://i.ibb.co/wcLv5cj/golf.jpg" alt="golf" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Volkswagen</span></li>
+                                        <li><span class="ellipses">Car Model:Golf GTI</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:Navy Blue</span></li>
+                                        <li><span class="ellipses">Price:Ksh 1,650,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -74,7 +120,15 @@ Dashboard
                             <img src="https://i.ibb.co/tYyxDpV/audia3.jpg" alt="audia3" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Audi</span></li>
+                                        <li><span class="ellipses">Car Model:A3</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:Red</span></li>
+                                        <li><span class="ellipses">Price:Ksh 1,395,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -86,7 +140,15 @@ Dashboard
                             <img src="https://i.ibb.co/59Lwg7y/auris.jpg" alt="auris" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Toyota</span></li>
+                                        <li><span class="ellipses">Car Model:Auris</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:Black</span></li>
+                                        <li><span class="ellipses">Price:Ksh 1,200,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -96,7 +158,15 @@ Dashboard
                             <img src="https://i.ibb.co/8XkBCMc/rav4brown.jpg" alt="rav4brown" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Toyota</span></li>
+                                        <li><span class="ellipses">Car Model:Rav4</span></li>
+                                        <li><span class="ellipses">Year:2017</span></li>
+                                        <li><span class="ellipses">Color:Brown</span></li>
+                                        <li><span class="ellipses">Price:Ksh 4,400,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -106,7 +176,15 @@ Dashboard
                             <img src="https://i.ibb.co/34BKKKG/nissannote.jpg" alt="nissannote" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Nissan</span></li>
+                                        <li><span class="ellipses">Car Model:Note</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:White</span></li>
+                                        <li><span class="ellipses">Price:Ksh 650,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -118,17 +196,33 @@ Dashboard
                             <img src="https://i.ibb.co/wLLg6fW/crown.jpg" alt="crown" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Toyota</span></li>
+                                        <li><span class="ellipses">Car Model:Crown Royal</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:White</span></li>
+                                        <li><span class="ellipses">Price:Ksh 1,780,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="thumbnail">
-                            <img src="https://i.ibb.co/wcLv5cj/golf.jpg" alt="golf" border="0">
+                            <img src="https://i.ibb.co/LNCYV8L/hondainsight.jpg" alt="hondainsight" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make:Honda</span></li>
+                                        <li><span class="ellipses">Car Model:Insight</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:Silver</span></li>
+                                        <li><span class="ellipses"> Price:Ksh 900,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -138,11 +232,18 @@ Dashboard
                             <img src="https://i.ibb.co/Gkv0F4y/mercedese250.jpg" alt="mercedese250" border="0">
 
                             <div class="caption">
-                                <p>Lorem ipsum...</p>
+                                <p>
+                                    <ul style="list-style-type:none;">
+                                        <li><span class="ellipses">Car Make: Mercedes Benz</span></li>
+                                        <li><span class="ellipses">Car Model: E-250</span></li>
+                                        <li><span class="ellipses">Year:2012</span></li>
+                                        <li><span class="ellipses">Color:Grey</span></li>
+                                        <li><span class="ellipses"> Price:Ksh 4,700,000</span></li>
+                                    </ul>
+                                </p>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -150,7 +251,11 @@ Dashboard
                     <h2 class="sub-header">Add a car</h2>
                     <h4>Enter car name:</h4>
                     <form method="POST" action="./dashboard">
-                        <input type="text" name="title">
+                        <input type="text" name="carmake">
+                        <input type="text" name="carmodel">
+                        <input type="text" name="color">
+                        <input type="text" name="year">
+                        <input type="text" name="price">
                         <input type="submit" value="Add">
                     </form>
                     <h2 class="sub-header">Current Inventory</h2>
@@ -160,6 +265,9 @@ Dashboard
                                 <tr>
                                     <th>Car Make</th>
                                     <th>Car Model</th>
+                                    <th>Year</th>
+                                    <th>Color</th>
+                                    <th>Price</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
@@ -169,11 +277,21 @@ Dashboard
                                 <tr>
                                     <!-- <td> -->
                                     <form method="POST" action="./update">
+                                        <input type="hidden" value="{{car.id}}" name="id">
                                         <td>
-                                            <input type="text" value="{{car.carmake}}" name="oldtitle" readonly>
+                                            <input type="text" value="{{car.carmake}}" name="make">
                                         </td>
                                         <td>
-                                            <input type="text" value="" name="newtitle">
+                                            <input type="text" value="{{car.carmodel}}" name="model">
+                                        </td>
+                                        <td>
+                                            <input type="number" value="{{car.color}}" name="color">
+                                        </td>
+                                        <td>
+                                            <input type="number" value="{{car.year}}" name="year">
+                                        </td>
+                                        <td>
+                                            <input type="number" value="{{car.price}}" name="price">
                                         </td>
                                         <td>
                                             <input type="submit" value="Update">
@@ -181,7 +299,7 @@ Dashboard
                                     </form>
                                     <td>
                                         <form method="POST" action="./delete">
-                                            <input type="hidden" value="{{car.carmake}}" name="title">
+                                            <input type="hidden" value="{{car.id}}" name="id">
                                             <input type="submit" value="Delete">
                                         </form>
                                     </td>
@@ -191,25 +309,22 @@ Dashboard
                                 {% endfor %}
                             </tbody>
                         </table>
+                      
                         <div class="starter-template">
                             <br /> <br />
-                            <h1> Auto Inc.Vehicle Inquiry Form</h1>
-                            <h1 class="lead">Welcome to Auto Inc.</h1>
-                            <p>Tmsiedibefendcflkmldfalejrih jreiahivhb bdusg</p>
-                            <p>-- list the form options you want to use</p>
-                        </div>
-                        <div class="starter-template">
-                            <br /> <br />
-                            <h1>Contact Us </h1>
-                            <h1 class="lead">Welcome to Auto Inc.</h1>
-                            <p>email</p>
-                            <p>phone</p>
-                            <p>currency</p>
-                            <p>social handles</p>
+                            <
                         </div>
                     </div>
                 </div>
+       
+        <footer>
+            <p><h3>Contact Us </h3></p>
+            <p>Email Address: info@autoinc.com</p>
+            <p>Phone Number: +254 788505050</p>
+            <p>Facebook/Twitter: Autoinc.</p>
 
+        </footer>
+            
             </div>
         </div>
 {% endblock %}

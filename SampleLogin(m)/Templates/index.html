@@ -11,6 +11,25 @@ Auto Inc.
 {% endblock %}
 
 {% block content %}
+
+<head>
+
+    <style>
+    img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    }
+
+    footer {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+            color: black;
+        }
+    </style>
+
+</head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -26,6 +45,10 @@ Auto Inc.
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
+                 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
                 </ul>
@@ -37,6 +60,8 @@ Auto Inc.
         <div class="starter-template">
             <br /> <br />
             <h1>Welcome to Auto Inc.</h1>
+            <h2>About Us</h2>
+            <p>Search bar here..</p>
             <h1 class="lead">New Arrivals</h1>
             <p>add a small search bar, searches cars on this page,,,hence cars should be in db as well</p>
 
@@ -48,7 +73,16 @@ Auto Inc.
                     <img src="https://i.ibb.co/fDJS0fD/jeep.jpg" alt="jeep" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Jeep</span></li>
+                                <li><span class="ellipses">Car Model:Grand Cherokee</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:Wine Red</span></li>
+                                <li><span class="ellipses">Price:Ksh 4,700,000</span></li>
+                            </ul>
+                        </p>
+
                     </div>
                 </div>
             </div>
@@ -58,7 +92,15 @@ Auto Inc.
                     <img src="https://i.ibb.co/wcLv5cj/golf.jpg" alt="golf" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Volkswagen</span></li>
+                                <li><span class="ellipses">Car Model:Golf GTI</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:Navy Blue</span></li>
+                                <li><span class="ellipses">Price:Ksh 1,650,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -68,7 +110,15 @@ Auto Inc.
                     <img src="https://i.ibb.co/tYyxDpV/audia3.jpg" alt="audia3" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Audi</span></li>
+                                <li><span class="ellipses">Car Model:A3</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:Red</span></li>
+                                <li><span class="ellipses">Price:Ksh 1,395,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -80,7 +130,15 @@ Auto Inc.
                     <img src="https://i.ibb.co/59Lwg7y/auris.jpg" alt="auris" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Toyota</span></li>
+                                <li><span class="ellipses">Car Model:Auris</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:Black</span></li>
+                                <li><span class="ellipses">Price:Ksh 1,200,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -90,7 +148,15 @@ Auto Inc.
                     <img src="https://i.ibb.co/8XkBCMc/rav4brown.jpg" alt="rav4brown" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Toyota</span></li>
+                                <li><span class="ellipses">Car Model:Rav4</span></li>
+                                <li><span class="ellipses">Year:2017</span></li>
+                                <li><span class="ellipses">Color:Brown</span></li>
+                                <li><span class="ellipses">Price:Ksh 4,400,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -100,7 +166,15 @@ Auto Inc.
                     <img src="https://i.ibb.co/34BKKKG/nissannote.jpg" alt="nissannote" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Nissan</span></li>
+                                <li><span class="ellipses">Car Model:Note</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:White</span></li>
+                                <li><span class="ellipses">Price:Ksh 650,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -112,17 +186,33 @@ Auto Inc.
                     <img src="https://i.ibb.co/wLLg6fW/crown.jpg" alt="crown" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Toyota</span></li>
+                                <li><span class="ellipses">Car Model:Crown Royal</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:White</span></li>
+                                <li><span class="ellipses">Price:Ksh 1,780,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <img src="https://i.ibb.co/wcLv5cj/golf.jpg" alt="golf" border="0">
+                    <img src="https://i.ibb.co/LNCYV8L/hondainsight.jpg" alt="hondainsight" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make:Honda</span></li>
+                                <li><span class="ellipses">Car Model:Insight</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:Silver</span></li>
+                                <li><span class="ellipses"> Price:Ksh 900,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -132,7 +222,14 @@ Auto Inc.
                     <img src="https://i.ibb.co/Gkv0F4y/mercedese250.jpg" alt="mercedese250" border="0">
 
                     <div class="caption">
-                        <p>Lorem ipsum...</p>
+                        <p>
+                            <ul style="list-style-type:none;">
+                                <li><span class="ellipses">Car Make: Mercedes Benz Car Model: E-250</span></li>
+                                <li><span class="ellipses">Year:2012</span></li>
+                                <li><span class="ellipses">Color:Grey</span></li>
+                                <li><span class="ellipses"> Price:Ksh 4,700,000</span></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -142,12 +239,13 @@ Auto Inc.
 
     <br> </br>
 
-    <div class="starter-template">
-        <br /> <br />
-        <h1>Contact Us</h1>
-        <h1 class="lead">Auto Inc. on<ul>Facebook</ul><ul>Instagram</ul><ul>Twitter</ul> </h1>
-        <p>&copy;</p>
-    </div>
+    <footer>
+        <p><h3>Contact Us </h3></p>
+        <p>Email Address: info@autoinc.com</p>
+        <p>Phone Number: +254 788505050</p>
+        <p>Facebook/Twitter: Autoinc.</p>
+
+    </footer>
 
     </div><!-- /.container -->
     {% endblock %}
