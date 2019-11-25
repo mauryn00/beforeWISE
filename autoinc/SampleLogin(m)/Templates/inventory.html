@@ -1,0 +1,150 @@
+﻿{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <!-- <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{url_for('imports') }}">Imports</a></li>
+                <li><a href="{{url_for('inventory') }}">Inventory</a></li>
+                <li><a href="{{url_for('sales') }}">Sales</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            
+            <h1 class="sub-header">Current Inventory</h1>
+
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    table {
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+
+                    td, th {
+                        border: 2.5px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+
+                                  
+                    img {
+                        width: 200px;
+                        height: 200px;
+                        object-fit: cover;
+                    }
+                
+                </style>
+            </head>
+            <body>
+
+                <table>
+                    <tr>
+                        <th>Vehicle Photo</th>
+                        <th>Car Make</th>
+                        <th>Car Model</th>
+                        <th>Year </th>
+                        <th>Color </th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td><img src="https://i.ibb.co/q9KjfTd/mercedesbenz.jpg" alt="mercedesbenz" border="0"></td>
+                        <td>Mercedes Benz</td>
+                        <td> Mercedes-Benz S Class 400 Hybrid</td>
+                        <td>2014</td>
+                        <td>Silver</td>
+                        <td>Ksh 12,000,00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://i.ibb.co/d7y40Xj/mitsubishilancer.jpg" alt="mitsubishilancer" border="0"></td>
+                        <td>Mitsubishi</td>
+                        <td>Lancer</td>
+                        <td>2017</td>
+                        <td>White</td>
+                        <td>Ksh 1,330,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/60PtXPL/toyotaallion.jpg" alt="toyotaallion" border="0">
+                        </td>
+                        <td>Toyota</td>
+                        <td>Allion</td>
+                        <td>2012</td>
+                        <td>White</td>
+                        <td>Ksh 1,100,000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://i.ibb.co/2PqJ5kQ/isuzudmax.jpg" alt="isuzudmax" border="0"></td>
+                        <td>Isuzu</td>
+                        <td>D-Max</td>
+                        <td>2012</td>
+                        <td>Grey</td>
+                        <td>Ksh 2,800,000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://i.ibb.co/wyYg9jm/volkswagentiguan.jpg" alt="volkswagentiguan" border="0"></td>
+                        <td>Volkswagen</td>
+                        <td>Tiguan</td>
+                        <td>2012</td>
+                        <td>Blue</td>
+                        <td>Ksh 2,235,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/vzGgyw5/toyotamarkx.jpg" alt="toyotamarkx" border="0">
+                        </td>
+                        <td>Toyota</td>
+                        <td>Mark X</td>
+                        <td>2012</td>
+                        <td>Black</td>
+                        <td>Ksh 1,450,000</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/5rC9gqq/toyotavitz.jpg" alt="toyotavitz" border="0">
+                        </td>
+                        <td>Toyota</td>
+                        <td>Vitz</td>
+                        <td>2012</td>
+                        <td>Silver</td>
+                        <td>Ksh 790,000</td>
+                    </tr>
+                </table>
+
+            </body>
+        </html>
+        </div>
+    </div>
+</div>
+    {% endblock %}

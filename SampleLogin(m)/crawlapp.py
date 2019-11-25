@@ -21,14 +21,7 @@ search_bar.send_keys(search_item)
 search_bar.send_keys(Keys.RETURN)
 
 
-#item_prices = browser.find_elements_by_class_name('c3gUW0')
-#item_titles = browser.find_elements_by_tag_name('h2')
 
 
-#for title in item_titles:
- #titles_list.append(title.text)
-#for price in item_prices:
-    #prices_list.append(prices.text)
 
-#print (titles_list)
-#print (prices_list)
+

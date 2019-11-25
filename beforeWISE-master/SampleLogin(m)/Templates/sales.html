@@ -1,0 +1,173 @@
+﻿{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <!-- <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{url_for('imports') }}">Imports</a></li>
+                <li><a href="{{url_for('inventory') }}">Inventory</a></li>
+                <li><a href="{{url_for('sales') }}">Sales</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="sub-header">Sales</h1>
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    table {
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+
+                    td, th {
+                        border: 2.5px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+
+             
+                    img {
+                        width: 200px;
+                        height: 200px;
+                        object-fit: cover;
+                    }
+                </style>
+            </head>
+            <body>
+
+                <table>
+                    <tr>
+                        <th>Vehicle Photo</th>
+                        <th>Car Make</th>
+                        <th>Car Model</th>
+                        <th>Year </th>
+                        <th>Color </th>
+                        <th>Price</th>
+                        <th>Sale Date</th>
+                        <th>SalesPerson</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/0K5h2B7/toyotabelta.jpg" alt="toyotabelta" border="0">
+                        </td>
+                        <td>Toyota</td>
+                        <td>Belta</td>
+                        <td>2012</td>
+                        <td>White</td>
+                        <td>Ksh 800,00</td>
+                        <td><input type="date" /></td>
+                        <td>Everlyne</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/LNCYV8L/hondainsight.jpg" alt="hondainsight" border="0">
+                        </td>
+                        <td>Honda</td>
+                        <td>Insight</td>
+                        <td>2012</td>
+                        <td>Silver</td>
+                        <td>Ksh 900,00</td>
+                        <td><input type="date" /></td>
+                        <td>Charles</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/p12QHhW/pradobrown.jpg" alt="pradobrown" border="0">
+                        </td>
+                        <td>Land Cruiser</td>
+                        <td>Prado</td>
+                        <td>2012</td>
+                        <td>Brown</td>
+                        <td>Ksh 3,900,00</td>
+                        <td><input type="date" /></td>
+                        <td>Sally</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/h797Bfd/probox.jpg" alt="probox" border="0">
+                        </td>
+                        <td>Toyota</td>
+                        <td>Probox</td>
+                        <td>2012</td>
+                        <td>White</td>
+                        <td>Ksh 500,00</td>
+                        <td><input type="date" /></td>
+                        <td>Nathan</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/tmSCjKm/hondafitorange.jpg" alt="hondafitorange" border="0">
+                        </td>
+                        <td>Honda</td>
+                        <td>Fit</td>
+                        <td>2012</td>
+                        <td>Orange</td>
+                        <td>Ksh 780,00</td>
+                        <td><input type="date" /></td>
+                        <td>Sally</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/v4vRkgh/subaru-impreza.jpg" alt="subaru-impreza" border="0">
+                        </td>
+                        <td>Subaru</td>
+                        <td>Impreza WRX STI</td>
+                        <td>2012</td>
+                        <td>White</td>
+                        <td>Ksh 2,499,00</td>
+                        <td><input type="date" /></td>
+                        <td>Edward</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="https://i.ibb.co/YRDg91K/benzc-coupe.jpg" alt="benzc-coupe" border="0">
+                        </td>
+                        <td>Mercedes Benz</td>
+                        <td>C-Coupe</td>
+                        <td>2016</td>
+                        <td>Blue</td>
+                        <td>Ksh4,500,00</td>
+                        <td><input type="date" /></td>
+                        <td>Fraciah</td>
+                    </tr>
+                </table>
+   
+            </body>
+        </html>
+
+        </div>
+    </div>
+</div>
+    {% endblock %}

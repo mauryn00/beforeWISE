@@ -272,19 +272,17 @@ Dashboard
 
                     <tbody>
                     <form method="POST" action="./dashboard">
-    <input type="text" name="carmake" placeholder="Car Make">
-    <input type="text" name="carmodel" placeholder="Car Model">
-    <input type="text" name="color" placeholder="Color">
-    <input type="text" name="year" placeholder="Year">
-    <input type="text" name="price" placeholder="Price">
-    <input type="submit" value="Add">
+             <input type="text" name="carmake" placeholder="Car Make">
+             <input type="text" name="carmodel" placeholder="Car Model">
+             <input type="text" name="color" placeholder="Color">
+             <input type="text" name="year" placeholder="Year">
+             <input type="text" name="price" placeholder="Price">
+             <input type="submit" value="Add">
                     </form>
 
                         {% for car in cars %}
-                        <tr>
-                            
+                        <tr>                          
                             <!-- <td> -->
-
                             <form method="POST" action="./update">
                                 <input type="hidden" value="{{car.id}}" name="id">
                                 <td>

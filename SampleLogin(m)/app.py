@@ -42,7 +42,7 @@ class Car(db.Model):
     year = db.Column(db.String(4), unique=True, nullable=False,)
     price = db.Column(db.String(20), unique=True, nullable=False,)
 
-class Sbtcrawl(db.Model):
+class make(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     carmake = db.Column(db.String(80), unique=True, nullable=False,)
     #carmodel = db.Column(db.String(80), unique=True, nullable=False,)
@@ -83,7 +83,6 @@ def update():
         car.color = request.form.get("color")
         car.year = request.form.get("year")
         car.price = request.form.get("price")
-
         db.session.commit()
     except Exception as e:
         print("Failed to Update Car")
@@ -198,12 +197,31 @@ def imports():
         for item in li_items:
             text = item.text
             components = text.split()#splits the string into arrays
+            
+          #  carmake_ = components[2] #Mazda
+            #save or retrieve the make
+
+            #select from the make table where make is equal to carmake_
+
+            #if it exists, then get the id as the carmake, else, insert it and return the id`
+
+            #carmodel_ = components[3]
+            #save or retrieve the model
+
+             #select from the model table where model is equal to carmodel_
+
+            #if it exists, then get the id as the carmodel, else, insert it and return the id`
+
+
+            #source = 1
+
             car = Car(id=components[0],
                       carmake=components[1],
                       carmodel=components[2],
                       color=components[3],
                       year=components[4],
-                      price=components[5])
+                      price=components[5],
+                      source=components[6])
 
             db.session.add(car)
             db.session.commit()
